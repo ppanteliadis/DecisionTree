@@ -635,6 +635,14 @@ tree.classify.bag <- function(trees = c(), x=c()){
 }
 
 
+# Compute a pvalue given a 2*2 confusion matrix
+#
+# Inputs:
+# =======
+# t: A 2*2 confusion matrix
+pval <- function (t) {
+    print (2*pbinom(t[1,1], sum(diag(t)), prob = 0.5))
+}
 
 
 
@@ -731,9 +739,6 @@ bag.corr <- as.numeric(pred.eclipse.bag == post.test)
 rf.bag.comp <- table(rf.corr, bag.corr)
 pval(rf.bag.comp)
 
-pval <- function (t) {
-    print (2*pbinom(t[1,1], sum(diag(t)), prob = 0.5))
-}
 
 
 
